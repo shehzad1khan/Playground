@@ -1,18 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RegisterController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 
-Route::get('hello', function(){
-    echo"Hello World";
-});
+// Route::get('about', function(){
+//     return view('about');
+// });
 
-Route::get('demo/{name?}/{id?}', function($name='Aladeen', $id='not define'){
-    $data = compact('name', 'id');
-    return view('demo')->with($data);
-});
+Route::get('/', [HomeController::class, 'index']);
+Route::get('about', [HomeController::class, 'about']);
 
-// video number 6, duration = 10:00;
+Route::get('register', [RegisterController::class, 'index']);
+Route::post('register', [RegisterController::class, 'register'])->name('register');
+
+
+// video number 8, completed;
