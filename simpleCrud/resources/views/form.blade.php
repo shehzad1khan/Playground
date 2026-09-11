@@ -9,9 +9,16 @@
         <form method='post' action='{{ route('register') }}'>
             @csrf
             <div class="mb-3">
-                <label for="name" class="form-label">Enter Name</label>
+                <label for="name" class="form-label">Student Name</label>
                 <input type="text" class="form-control" id="name" name='name' value="{{ old('name') }}">
                 @error('name')
+                    <span class='text-danger'>{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="fname" class="form-label">Father Name</label>
+                <input type="text" class="form-control" id="fname" name='fname' value="{{ old('fname') }}">
+                @error('fname')
                     <span class='text-danger'>{{ $message }}</span>
                 @enderror
             </div>
@@ -24,18 +31,17 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Enter Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" name='password'>
-                @error('password')
+                <label for="gender" class="form-label">Select Gender</label>
+                <select class="form-select form-select-lg" name="gender" id="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                @error('gender')
                     <span class='text-danger'>{{ $message }}</span>
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="confirm_password" class="form-label">Confirm Password</label>
-                <input type="password" class="form-control" id="confirm_password" name='confirm_password'>
-                @error('confirm_password')
-                    <span class='text-danger'>{{ $message }}</span>
-                @enderror
+                <textarea class="form-control" name="address" id="address" rows="3"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
